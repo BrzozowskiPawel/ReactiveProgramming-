@@ -82,14 +82,172 @@ import RxCocoa
  Behavior Relay - wraps a behavior subject and stores value in state
  */
 
+//let disposeBag = DisposeBag()
+//
+//let relay = BehaviorRelay(value: ["Item 0"])
+//
+//relay.accept(relay.value + ["Item 1"])
+//
+//relay.asObservable().subscribe{
+//    print($0)
+//}
+
+// MARK: - OPERATORS
+
+/*
+ Ignore
+ */
+//
+//let strikes = PublishSubject<String>()
+//
+//let dispodeBag = DisposeBag()
+//
+//// Subscibing, ignoring the event.
+//strikes.ignoreElements().subscribe { _ in
+//    print("[Subscribtion is called]")
+//}.disposed(by: dispodeBag)
+//
+//strikes.onNext("A")
+////  When calling event nothing is being shown. This is bacause of ignoreElement()
+//
+//strikes.onCompleted()
+//// Hoever onCompleted will be still called: "[Subscribtion is called]" will be shown.
+
+
+
+/*
+ elementAt - gives particula value on particual index
+ */
+
+//let strikes = PublishSubject<String>()
+//let disposeBag = DisposeBag()
+//
+//strikes.element(at: 2).subscribe(onNext: {
+//    _ in print("You are out!")
+//}).disposed(by: disposeBag)
+//
+//
+//// Pass some events
+//strikes.onNext("A")
+//// After passin 1 vlaue subscribtion never fires
+//
+//strikes.onNext("B")
+//// After passin 2 vlaues subscribtion never fires
+//
+//strikes.onNext("C")
+//// After passing 3 values subscribtion fires.
+
+
+
+
+/*
+ filter - gives particula value when they are fullfil teh condition
+ */
+
+//let disposeBag = DisposeBag()
+//
+//Observable.of(1,2,3,4,5,6,7).filter{$0 % 2 == 0}.subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+
+
+
+/*
+ Skip(number) - skipping first <number> values
+ */
+
+//let disposeBag = DisposeBag()
+//
+//Observable.of("A", "B", "C", "D", "E", "F").skip(3).subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+
+
+
+/*
+ Skip While (logic ) - skipping values taht fulfil this condition, ocne condition false then all next values arent skipped
+ */
+
+//let disposeBag = DisposeBag()
+//
+//Observable.of(2,2,3,4,6).skipWhile{$0 % 2 == 0}.subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+
+
+
+/*
+ Skip Until (logic ) - operator will be waiting to trigger. After trigger are values will be let thrugh
+*/
+
+//let disposeBag = DisposeBag()
+//
+//let subject = PublishSubject<String>()
+//
+//let trigger = PublishSubject<String>()
+//
+//subject.skip(until: trigger).subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+//
+//subject.onNext("A")
+//subject.onNext("B")
+//subject.onNext("C")
+//
+//// Nothing is printed, until pass to trigger
+//
+//trigger.onNext("TRIGGERING")
+//
+//subject.onNext("subject after trigger")
+//// After triggernign we can see action on subject
+
+
+
+/*
+ Take - take<number> items from sequence for ex. <1,2,3,4> take(3) -> <1,2,3>
+*/
+
+//let disposeBag = DisposeBag()
+//
+//Observable.of(1,2,3,4,5).take(3).subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+
+
+/*
+ TakeWhile - take<logic> items from sequence until condition is true
+*/
+
+//let disposeBag = DisposeBag()
+//
+//Observable.of(2,4,6,1,8,3,4,6).takeWhile{$0 % 2 == 0}.subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+
+
+
+/*
+ TakeUntil - take<trigger> items from sequence until something is triggered. After that do not take
+*/
+
 let disposeBag = DisposeBag()
 
-let relay = BehaviorRelay(value: ["Item 0"])
+let subject = PublishSubject<String>()
 
-relay.accept(relay.value + ["Item 1"])
+let trigger = PublishSubject<String>()
 
-relay.asObservable().subscribe{
+subject.takeUntil(trigger).subscribe(onNext: {
     print($0)
-}
+}).disposed(by: disposeBag)
 
+subject.onNext("A")
+subject.onNext("B")
+subject.onNext("C")
+// Values above are being printed
 
+trigger.onNext("Triggering")
+// TRIGGERNIG
+
+subject.onNext("D")
+subject.onNext("E")
+// Values below triggernign aren't being printed 
