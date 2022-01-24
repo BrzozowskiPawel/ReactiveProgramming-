@@ -12,6 +12,7 @@
 		04881479279F1B3600070276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04881477279F1B3600070276 /* Main.storyboard */; };
 		0488147B279F1B3700070276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488147A279F1B3700070276 /* Assets.xcassets */; };
 		0488147E279F1B3700070276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0488147C279F1B3700070276 /* LaunchScreen.storyboard */; };
+		04881487279F1B8900070276 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04881486279F1B8900070276 /* TaskListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0488147A279F1B3700070276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0488147D279F1B3700070276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0488147F279F1B3700070276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04881486279F1B8900070276 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		04881470279F1B3600070276 /* ToDoListRx */ = {
 			isa = PBXGroup;
 			children = (
+				04881485279F1B7C00070276 /* Controllers */,
 				04881471279F1B3600070276 /* AppDelegate.swift */,
 				04881473279F1B3600070276 /* SceneDelegate.swift */,
 				04881477279F1B3600070276 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				0488147F279F1B3700070276 /* Info.plist */,
 			);
 			path = ToDoListRx;
+			sourceTree = "<group>";
+		};
+		04881485279F1B7C00070276 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04881486279F1B8900070276 /* TaskListViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			files = (
 				04881472279F1B3600070276 /* AppDelegate.swift in Sources */,
 				04881474279F1B3600070276 /* SceneDelegate.swift in Sources */,
+				04881487279F1B8900070276 /* TaskListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
