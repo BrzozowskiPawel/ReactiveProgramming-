@@ -12,6 +12,7 @@ enum Priority: Int {
     case medium
     case low
 }
+
 struct Task {
     var title: String
     var priority: Priority
