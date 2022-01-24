@@ -18,8 +18,10 @@ class TaskListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup the tableView
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
 }
 
