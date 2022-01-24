@@ -54,7 +54,7 @@
                     <navigationItem key="navigationItem" title="ToDo ✅" id="7Hm-Qi-UAh">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="B57-ui-Ayy">
                             <connections>
-                                <segue destination="veI-UJ-XF2" kind="show" id="8F3-Cd-Fwk"/>
+                                <segue destination="veI-UJ-XF2" kind="show" identifier="addTaskSegue" id="8F3-Cd-Fwk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

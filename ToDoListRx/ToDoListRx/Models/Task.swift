@@ -13,6 +13,6 @@ enum Priority: Int {
     case low
 }
 struct Task {
-    let title: String
-    let priority: Priority
+    var title: String
+    var priority: Priority
 }

@@ -6,9 +6,17 @@
 //
 
 import UIKit
-
+import RxSwift
 class AddTaskViewController: UIViewController {
 
+    // Create a publish subject - it can emit and subscribe
+    private let taskSubject = PublishSubject<Task>()
+    
+    // OBserbvble of the Task should be accesable outside of this controller
+    var taskSubjectObservable: Observable<Task> {
+        return taskSubject.asObservable()
+    }
+    
     @IBOutlet weak var prioritySegmentedControll: UISegmentedControl!
     @IBOutlet weak var taskTitleTextField: UITextField!
     
@@ -27,6 +35,12 @@ class AddTaskViewController: UIViewController {
         
         // Create a task
         let task = Task(title: title, priority: priority)
+        
+        // Add task to the subject
+        taskSubject.onNext(task)
+        
+        // Dismiss this screen
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }
