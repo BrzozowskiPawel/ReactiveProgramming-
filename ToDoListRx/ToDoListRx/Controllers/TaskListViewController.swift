@@ -33,11 +33,13 @@ class TaskListViewController: UIViewController {
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return filteredTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+        
+        cell.setUpCell(currentTask: filteredTasks[indexPath.row])
         
         return cell
     }
@@ -48,8 +50,8 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
                 // Subscribe on this observable
                 addVC.taskSubjectObservable.subscribe(onNext: { [unowned self] task in
                     
-//                    // Get the selected (on the segemntedController0 priority
-//                    let priority = Priority(rawValue: self.pioritySegmentedControl.selectedSegmentIndex - 1)
+                    // Get the selected (on the segemntedController0 priority
+                    let priority = Priority(rawValue: self.pioritySegmentedControl.selectedSegmentIndex - 1)
                     
                     // Existing list of tasks
                     let existingTaskts = self.tasks.value
@@ -57,8 +59,8 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
                     // Add new task to the array of tasks
                     self.tasks.accept(existingTaskts + [task])
                     
-//                    // Call filtering
-//                    self.filterTasks(by: priority)
+                    // Call filtering
+                    self.filterTasks(by: priority)
                     
                 }).disposed(by: disposeBag)
             }
@@ -73,10 +75,16 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
         self.filterTasks(by: priority)
     }
     
+    private func updateTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     private func filterTasks(by priority: Priority?) {
         // All priorities
         if priority == nil {
             self.filteredTasks = self.tasks.value
+            self.updateTableView()
         }
         else {
             // Get only task that have this priority
@@ -85,6 +93,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             }.subscribe(onNext: { [weak self] tasks in
                 self?.filteredTasks = tasks
                 print(tasks)
+                self!.updateTableView()
             }).disposed(by: disposeBag)
         }
     }

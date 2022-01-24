@@ -16,4 +16,5 @@ enum Priority: Int {
 struct Task {
     var title: String
     var priority: Priority
+    var id: String
 }
