@@ -19,11 +19,13 @@ class AddTaskViewController: UIViewController {
     }
     
 
-    @IBAction func saveTask(_ sender: UIBarButtonItem) {    
+    @IBAction func saveTask(_ sender: UIBarButtonItem) {
+        // Check if there is data to create task
         guard let priority = Priority(rawValue: self.prioritySegmentedControll.selectedSegmentIndex), let title = self.taskTitleTextField.text else {
             return
         }
         
+        // Create a task
         let task = Task(title: title, priority: priority)
     }
     
