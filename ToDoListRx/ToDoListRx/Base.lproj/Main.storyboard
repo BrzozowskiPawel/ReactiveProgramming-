@@ -40,7 +40,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnC-tm-NcP">
-                                                    <rect key="frame" x="30" y="21" width="39.5" height="20.5"/>
+                                                    <rect key="frame" x="30" y="21.5" width="39.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="iuY-8P-71J"/>
                                                     </constraints>
@@ -49,7 +49,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MO7-sC-tm2">
-                                                    <rect key="frame" x="335" y="21" width="49" height="20.5"/>
+                                                    <rect key="frame" x="335" y="21.5" width="49" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="4e8-sI-XK0"/>
                                                     </constraints>
@@ -59,12 +59,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="TnC-tm-NcP" secondAttribute="bottom" constant="10" id="Gb1-Rd-Zev"/>
-                                                <constraint firstItem="TnC-tm-NcP" firstAttribute="leading" secondItem="5Tf-Oe-7am" secondAttribute="leadingMargin" constant="10" id="I2A-K9-2b5"/>
-                                                <constraint firstItem="MO7-sC-tm2" firstAttribute="top" secondItem="5Tf-Oe-7am" secondAttribute="topMargin" constant="10" id="OV6-h3-8hy"/>
-                                                <constraint firstItem="TnC-tm-NcP" firstAttribute="top" secondItem="5Tf-Oe-7am" secondAttribute="topMargin" constant="10" id="Xip-Ri-DM2"/>
-                                                <constraint firstItem="MO7-sC-tm2" firstAttribute="trailing" secondItem="5Tf-Oe-7am" secondAttribute="trailingMargin" constant="-10" id="cgY-JI-mJo"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MO7-sC-tm2" secondAttribute="bottom" constant="10" id="eSq-J0-5xj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TnC-tm-NcP" secondAttribute="bottom" priority="750" constant="10" id="Gb1-Rd-Zev"/>
+                                                <constraint firstItem="TnC-tm-NcP" firstAttribute="leading" secondItem="5Tf-Oe-7am" secondAttribute="leadingMargin" priority="750" constant="10" id="I2A-K9-2b5"/>
+                                                <constraint firstItem="MO7-sC-tm2" firstAttribute="top" secondItem="5Tf-Oe-7am" secondAttribute="topMargin" priority="750" constant="10" id="OV6-h3-8hy"/>
+                                                <constraint firstItem="TnC-tm-NcP" firstAttribute="top" secondItem="5Tf-Oe-7am" secondAttribute="topMargin" priority="750" constant="10" id="Xip-Ri-DM2"/>
+                                                <constraint firstItem="MO7-sC-tm2" firstAttribute="trailing" secondItem="5Tf-Oe-7am" secondAttribute="trailingMargin" priority="750" constant="-10" id="cgY-JI-mJo"/>
+                                                <constraint firstItem="MO7-sC-tm2" firstAttribute="centerY" secondItem="5Tf-Oe-7am" secondAttribute="centerY" id="co7-7Y-Df4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="MO7-sC-tm2" secondAttribute="bottom" priority="750" constant="10" id="eSq-J0-5xj"/>
+                                                <constraint firstItem="TnC-tm-NcP" firstAttribute="centerY" secondItem="5Tf-Oe-7am" secondAttribute="centerY" id="tE2-ou-5TL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

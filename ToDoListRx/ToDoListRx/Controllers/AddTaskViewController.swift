@@ -33,22 +33,14 @@ class AddTaskViewController: UIViewController {
             return
         }
         
-        // Crate random id
-        let randID =  randomString(length: 6)
-        
         // Create a task
-        let task = Task(title: title, priority: priority, id: randID)
+        let task = Task(title: title, priority: priority)
         
         // Add task to the subject
         taskSubject.onNext(task)
         
         // Dismiss this screen
         _ = navigationController?.popViewController(animated: true)
-    }
-    
-    private func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
 }

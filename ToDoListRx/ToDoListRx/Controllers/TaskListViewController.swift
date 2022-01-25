@@ -27,22 +27,6 @@ class TaskListViewController: UIViewController {
         tableView.dataSource = self
         
     }
-}
-
-// MARK: - tabelView functions
-extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredTasks.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        
-        cell.setUpCell(currentTask: filteredTasks[indexPath.row])
-        
-        return cell
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTaskSegue" {
@@ -97,4 +81,22 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             }).disposed(by: disposeBag)
         }
     }
+    
+}
+
+// MARK: - tabelView functions
+extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredTasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+        
+        cell.setUpCell(currentTask: filteredTasks[indexPath.row])
+        
+        return cell
+    }
+    
 }
