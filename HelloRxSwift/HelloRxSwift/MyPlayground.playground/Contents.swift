@@ -230,24 +230,80 @@ import RxCocoa
  TakeUntil - take<trigger> items from sequence until something is triggered. After that do not take
 */
 
-let disposeBag = DisposeBag()
-
-let subject = PublishSubject<String>()
-
-let trigger = PublishSubject<String>()
-
-subject.takeUntil(trigger).subscribe(onNext: {
-    print($0)
-}).disposed(by: disposeBag)
-
-subject.onNext("A")
-subject.onNext("B")
-subject.onNext("C")
-// Values above are being printed
-
-trigger.onNext("Triggering")
-// TRIGGERNIG
-
-subject.onNext("D")
-subject.onNext("E")
+//let disposeBag = DisposeBag()
+//
+//let subject = PublishSubject<String>()
+//
+//let trigger = PublishSubject<String>()
+//
+//subject.takeUntil(trigger).subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposeBag)
+//
+//subject.onNext("A")
+//subject.onNext("B")
+//subject.onNext("C")
+//// Values above are being printed
+//
+//trigger.onNext("Triggering")
+//// TRIGGERNIG
+//
+//subject.onNext("D")
+//subject.onNext("E")
 // Values below triggernign aren't being printed 
+
+
+
+
+
+// TANSFORMING OPERATORS
+
+
+/*
+ TO Array - retrun array
+ */
+
+//let disposaeBag = DisposeBag()
+//Observable.of(12,3,4,5).toArray().subscribe({
+//    print($0)
+//}).disposed(by: disposaeBag)
+
+
+/*
+ Map - like a normal map
+ 
+*/
+
+//let disposaeBag = DisposeBag()
+//Observable.of(12,3,4,5).map {
+//    return $0 * 2
+//}.subscribe(onNext: {
+//    print($0)
+//}).disposed(by: disposaeBag)
+
+
+
+
+/*
+ Flat Map - project  aobservable and flattern it to target observable
+*/
+
+let disposaeBag = DisposeBag()
+
+struct Student {
+    var score: BehaviorRelay<Int>
+}
+
+let john = Student(score: BehaviorRelay(value: 75))
+let mary = Student(score: BehaviorRelay(value: 90))
+
+let student = PublishSubject<Student>()
+
+student.asObservable().flatMap { $0.score.asObservable() }.subscribe(onNext: {
+    print($0)
+}).disposed(by: disposaeBag)
+
+student.onNext(john)
+
+john.score.accept(100)
+
