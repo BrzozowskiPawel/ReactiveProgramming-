@@ -18,7 +18,7 @@ Temporay demo gifs: </br>
   No description yet. </br>
  
  ### Adding new ToDo:
- <img src="readme_files/photo_filtter.gif" alt="basics" height="386"/>  </br>
+ <img src="readme_files/ToDO_add.gif" alt="basics" height="386"/>  </br>
  
  ### Filtering ToDo:
  <img src="readme_files/ToDO_show.gif" alt="basics" height="386"/>  </br>
