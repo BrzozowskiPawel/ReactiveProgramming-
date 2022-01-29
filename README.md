@@ -1,4 +1,4 @@
-# RxSwift
+# Reactive Programming - RxSwift and Combine basics.
 
 Readme and repo stil under development 👷🏻‍♂️. </br>
 Temporay demo gifs: </br>
